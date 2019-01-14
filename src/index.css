@@ -1,0 +1,52 @@
+.App {
+  font-family: "Source Sans Pro";
+}
+
+h1,
+h5 {
+  margin: 0 !important;
+  color: @lime-6;
+}
+
+.logo {
+  width: 120px;
+  margin-top: 5px;
+  height: 20px;
+  font-family: "Guildford Pro Titling";
+  float: left;
+  text-transform: uppercase;
+  font-size: 25px;
+  color: #ff6178;
+}
+
+.header,
+.ant-menu-dark {
+  background: #f9f9f9;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background: #f9f9f9;
+}
+
+.ant-menu-item-selected {
+  color: #777;
+}
+
+.ant-menu-vertical .ant-menu-item:after,
+.ant-menu-vertical-left .ant-menu-item:after,
+.ant-menu-vertical-right .ant-menu-item:after,
+.ant-menu-inline .ant-menu-item:after {
+  border-right: 3px solid #ff6178;
+}
+
+.ant-menu-item:hover,
+.ant-menu-item-active,
+.ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+.ant-menu-submenu-active,
+.ant-menu-submenu-title:hover {
+  color: #241922;
+}
+
+#addresses td {
+  text-transform: uppercase;
+}
