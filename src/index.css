@@ -1,11 +1,11 @@
 .App {
   font-family: "Source Sans Pro";
+  height: 100vh;
 }
 
 h1,
 h5 {
   margin: 0 !important;
-  color: @lime-6;
 }
 
 .logo {
