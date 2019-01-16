@@ -6,8 +6,8 @@
     "antd": "latest"
   },
   "keywords": [],
-  "name": "antd-reproduction-template",
-  "description": null,
+  "name": "master-create-drop",
+  "description": "",
   "version": "0.0.0",
   "devDependencies": {
     "react-scripts": "1.0.0"
