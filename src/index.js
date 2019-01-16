@@ -95,37 +95,27 @@ class App extends React.Component {
               width: "100%"
             }}
           >
-            <Row gutter={16}>
-              <Col md={19} sm={24}>
-                <Content
-                  style={{
-                    padding: "10px 20px",
-                    margin: "0",
-                    background: "#fff"
-                  }}
+            <div style={{ backgroundColor: "white", padding: "10px 20px" }}>
+              <Row type="flex" align="middle">
+                <Col span={18}>
+                  <h1>Create Drop</h1>
+                </Col>
+                <Col
+                  span={6}
+                  className={"lime-6"}
+                  style={{ textAlign: "right" }}
                 >
-                  <div>
-                    <Row type="flex" align="middle">
-                      <Col span={18}>
-                        <h1>Create Drop</h1>
-                      </Col>
-                      <Col
-                        span={6}
-                        className={"lime-6"}
-                        style={{ textAlign: "right" }}
-                      >
-                        <Progress
-                          percent={30}
-                          size="small"
-                          strokeColor="rgb(74, 158, 159)"
-                        />
-                      </Col>
-                    </Row>
-                  </div>
-
-                  <Divider style={{ marginTop: "10px", marginBottom: "0px" }} />
-                </Content>
-
+                  <Progress
+                    percent={30}
+                    size="small"
+                    strokeColor="rgb(74, 158, 159)"
+                  />
+                </Col>
+              </Row>
+              <Divider style={{ marginTop: "10px", marginBottom: "0px" }} />
+            </div>
+            <Row type="flex" style={{ backgroundColor: "white" }}>
+              <Col md={19} sm={24}>
                 <Row
                   style={{
                     backgroundColor: "white"
@@ -538,74 +528,76 @@ class App extends React.Component {
                     </div>
                   </Col>
                 </Row>
-                <div style={{ backgroundColor: "#ffffff", paddingTop: "20px" }}>
-                  <Divider style={{ margin: 0 }} />
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    padding: 8,
-                    color: "black",
-                    fontSize: 16,
-                    display: "flex",
-                    justifyContent: "center",
-                    background: "white"
-                  }}
-                >
-                  <div
-                    style={{
-                      margin: 4,
-                      display: "flex",
-                      width: "100%",
-                      alignItems: "center"
-                    }}
-                  >
-                    <a style={{ opacity: 0.4, marginRight: 24 }}>Save Draft</a>
-                    <span style={{ flex: 1 }} />
-                    <Button
-                      style={{
-                        background: "#FF6178",
-                        border: "1px solid #FF6178"
-                      }}
-                      type="primary"
-                      onClick={this.showModal}
-                      size="large"
-                    >
-                      Prepare Drop
-                    </Button>
-                  </div>
-                  <Modal
-                    title="Basic Modal"
-                    footer={null}
-                    visible={this.state.visible}
-                    onOk={this.handleOk}
-                    onCancel={this.handleCancel}
-                    maskStyle={{
-                      background:
-                        "linear-gradient(to bottom left, #f10f4d 0%, #fa7044 100%)"
-                    }}
-                  >
-                    <div>
-                      <div style={{ backgroundColor: "lightgray" }} />
-                      <div style={{ backgroundColor: "white" }} />
-                    </div>
-                  </Modal>
-                </div>
               </Col>
 
               <Col md={5} sm={24}>
                 <div
                   style={{
                     minHeight: "400px",
-                    backgroundColor: "#fff9fa",
-                    padding: "16px 16px 24px 16px"
+                    backgroundColor: "white",
+                    padding: "16px 16px 24px 16px",
+                    height: "100%",
+                    borderLeft: "1px solid #e8e8e8"
                   }}
                 >
                   instructions
                 </div>
               </Col>
             </Row>
+            <div style={{ backgroundColor: "#ffffff" }}>
+              <Divider style={{ margin: 0 }} />
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                padding: 8,
+                color: "black",
+                fontSize: 16,
+                display: "flex",
+                justifyContent: "center",
+                background: "white"
+              }}
+            >
+              <div
+                style={{
+                  margin: 4,
+                  display: "flex",
+                  width: "100%",
+                  alignItems: "center"
+                }}
+              >
+                <a style={{ opacity: 0.4, marginRight: 24 }}>Save Draft</a>
+                <span style={{ flex: 1 }} />
+                <Button
+                  style={{
+                    background: "#FF6178",
+                    border: "1px solid #FF6178"
+                  }}
+                  type="primary"
+                  onClick={this.showModal}
+                  size="large"
+                >
+                  Prepare Drop
+                </Button>
+              </div>
+              <Modal
+                title="Basic Modal"
+                footer={null}
+                visible={this.state.visible}
+                onOk={this.handleOk}
+                onCancel={this.handleCancel}
+                maskStyle={{
+                  background:
+                    "linear-gradient(to bottom left, #f10f4d 0%, #fa7044 100%)"
+                }}
+              >
+                <div>
+                  <div style={{ backgroundColor: "lightgray" }} />
+                  <div style={{ backgroundColor: "white" }} />
+                </div>
+              </Modal>
+            </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>
             Flamingo ©2019 Created by Pebblepost
