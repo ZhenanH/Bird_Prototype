@@ -95,16 +95,18 @@ class App extends React.Component {
               width: "100%"
             }}
           >
-            <div style={{ backgroundColor: "white", padding: "10px 20px" }}>
+            <div
+              style={{
+                backgroundColor: "white",
+                padding: "10px 20px",
+                paddingBottom: 0
+              }}
+            >
               <Row type="flex" align="middle">
-                <Col span={18}>
+                <Col span={19}>
                   <h1>Create Drop</h1>
                 </Col>
-                <Col
-                  span={6}
-                  className={"lime-6"}
-                  style={{ textAlign: "right" }}
-                >
+                <Col span={5} style={{ textAlign: "right" }}>
                   <Progress
                     percent={30}
                     size="small"
@@ -135,7 +137,6 @@ class App extends React.Component {
                       <div style={{ display: "flex", alignItems: "center" }}>
                         <Icon
                           type="check-circle"
-                          theme="filled"
                           style={{
                             color: "#4A9E9F",
                             fontSize: 16,
@@ -165,7 +166,7 @@ class App extends React.Component {
                           </Form.Item>
                           <Form.Item
                             label="Tags"
-                            style={{ margin: "18px 0 12px 24px" }}
+                            style={{ margin: "6px 0 12px 24px" }}
                           >
                             <Select
                               mode="tags"
@@ -238,7 +239,7 @@ class App extends React.Component {
                           </Row>
                           <Form.Item
                             label="Finish"
-                            style={{ margin: "18px 0 12px 24px" }}
+                            style={{ margin: "0px 0 12px 24px" }}
                           >
                             <Select defaultValue="please select">
                               <Option value="Matte">Matte</Option>
@@ -567,7 +568,7 @@ class App extends React.Component {
                   alignItems: "center"
                 }}
               >
-                <a style={{ opacity: 0.4, marginRight: 24 }}>Save Draft</a>
+                <a style={{ opacity: 0.4, fontSize: 12 }}>Save Draft</a>
                 <span style={{ flex: 1 }} />
                 <Button
                   style={{
