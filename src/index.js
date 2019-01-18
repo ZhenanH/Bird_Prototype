@@ -67,7 +67,7 @@ class App extends React.Component {
           <Header className="header" style={{ padding: 0 }}>
             <div
               style={{
-                padding: "0px 30px",
+                padding: "0px 20px",
                 maxWidth: "1400px",
                 margin: "auto",
                 width: "100%"
@@ -114,17 +114,18 @@ class App extends React.Component {
                   />
                 </Col>
               </Row>
-              <Divider style={{ marginTop: "10px", marginBottom: "0px" }} />
             </div>
             <Row type="flex" style={{ backgroundColor: "white" }}>
-              <Col md={19} sm={24}>
+              <Divider style={{ marginTop: "10px", marginBottom: "0px" }} />
+              <Col md={20} sm={24}>
                 <Row
                   style={{
                     backgroundColor: "white"
                   }}
                 >
                   <Col
-                    md={8}
+                    md={9}
+                    lg={8}
                     sm={24}
                     style={{ borderRight: "1px solid #E8E8E8" }}
                   >
@@ -139,7 +140,7 @@ class App extends React.Component {
                           type="check-circle"
                           style={{
                             color: "#4A9E9F",
-                            fontSize: 16,
+                            fontSize: 14,
                             marginRight: 8
                           }}
                         />
@@ -150,7 +151,7 @@ class App extends React.Component {
                             color: "#000000"
                           }}
                         >
-                          Information{" "}
+                          Drop Description{" "}
                         </span>
                       </div>
                       <div>
@@ -162,6 +163,7 @@ class App extends React.Component {
                             <Input
                               placeholder="Enter drop name"
                               value="Brand_2019-01-15"
+                              style={{ width: "90%" }}
                             />
                           </Form.Item>
                           <Form.Item
@@ -170,7 +172,7 @@ class App extends React.Component {
                           >
                             <Select
                               mode="tags"
-                              style={{ width: "100%" }}
+                              style={{ width: "90%" }}
                               placeholder="Type in tags"
                               dropdownStyle={{ display: "none" }}
                               value={["holiday"]}
@@ -182,7 +184,7 @@ class App extends React.Component {
 
                     <div
                       style={{
-                        padding: "16px 16px 0px 16px"
+                        padding: "6px 16px 0px 16px"
                         //borderBottom: "1px dashed lightgray"
                       }}
                     >
@@ -191,7 +193,7 @@ class App extends React.Component {
                           type="check-circle"
                           style={{
                             color: "lightgray",
-                            fontSize: 16,
+                            fontSize: 14,
                             marginRight: 8
                           }}
                         />
@@ -209,7 +211,7 @@ class App extends React.Component {
                       <div>
                         <Form layout="vertical" onSubmit={this.handleSubmit}>
                           <Row>
-                            <Col span={12} style={{ minWidth: 150 }}>
+                            <Col span={12}>
                               <Form.Item
                                 label="Size"
                                 style={{ margin: "18px 0 12px 24px" }}
@@ -220,40 +222,26 @@ class App extends React.Component {
                                 </RadioGroup>
                               </Form.Item>
                             </Col>
-                            <Col span={12} style={{ minWidth: 150 }}>
+                            <Col span={11}>
                               <Form.Item
-                                label="Unique Offer Code"
-                                style={{ margin: "18px 0 12px 24px" }}
+                                label="Finish"
+                                style={{ margin: "18px 0 12px 8px" }}
                               >
-                                <Switch
-                                  checkedChildren=" Include "
-                                  unCheckedChildren=" Exclude "
-                                  onChange={this.onChange}
-                                />{" "}
-                                <Icon
-                                  type="info-circle"
-                                  style={{ marginLeft: 8 }}
-                                />
+                                <Select defaultValue="please select">
+                                  <Option value="Matte">Matte</Option>
+                                  <Option value="Glossy">Glossy</Option>
+                                  <Option value="Regular">Regular</Option>
+                                </Select>
                               </Form.Item>
                             </Col>
                           </Row>
-                          <Form.Item
-                            label="Finish"
-                            style={{ margin: "0px 0 12px 24px" }}
-                          >
-                            <Select defaultValue="please select">
-                              <Option value="Matte">Matte</Option>
-                              <Option value="Glossy">Glossy</Option>
-                              <Option value="Regular">Regular</Option>
-                            </Select>
-                          </Form.Item>
                         </Form>
                       </div>
                     </div>
-
                     <div
                       style={{
                         padding: "16px 16px 16px 16px"
+                        //opacity: this.state.includeOffer ? 1 : 0.5
                       }}
                     >
                       <div style={{ display: "flex", alignItems: "center" }}>
@@ -265,6 +253,51 @@ class App extends React.Component {
                             marginRight: 8
                           }}
                         />
+                        <div
+                          style={{
+                            fontSize: 16,
+                            fontWeight: 600,
+                            //color: "#4A9E9F"
+                            display: "flex",
+                            alignItems: "center",
+                            color: "#000000"
+                          }}
+                        >
+                          Custom Offer Code{" "}
+                        </div>
+                      </div>
+                      <div style={{ padding: "10px 24px" }}>
+                        <Switch
+                          checkedChildren=" Yes"
+                          unCheckedChildren=" No"
+                          onChange={this.onChange}
+                          style={{ minWidth: 60 }}
+                        />
+
+                        <Button
+                          icon="barcode"
+                          size="small"
+                          style={{ marginLeft: 12 }}
+                          disabled={this.state.includeOffer ? false : true}
+                        >
+                          Set placeholder
+                        </Button>
+                      </div>
+                    </div>
+                    <div
+                      style={{
+                        padding: "6px 16px 0px 16px"
+                      }}
+                    >
+                      <div style={{ display: "flex", alignItems: "center" }}>
+                        <Icon
+                          type="check-circle"
+                          style={{
+                            color: "lightgray",
+                            fontSize: 14,
+                            marginRight: 8
+                          }}
+                        />
                         <span
                           style={{
                             fontSize: 16,
@@ -272,21 +305,25 @@ class App extends React.Component {
                             color: "#000000"
                           }}
                         >
-                          Recipient List{" "}
-                          {this.state.includeOffer ? "(incl. offer code)" : ""}
-                          <Icon type="info-circle" style={{ marginLeft: 8 }} />
+                          Mailing List{" "}
+                        </span>
+                        <span>
+                          {" "}
+                          {this.state.includeOffer
+                            ? " Alert for offer code col."
+                            : ""}
                         </span>
                       </div>
                       <div>
                         <Form layout="vertical" onSubmit={this.handleSubmit}>
                           <Form.Item style={{ margin: "18px 0 12px 24px" }}>
                             <Select
-                              //style={{ maxWidth: 200 }}
+                              style={{ width: "90%" }}
                               defaultValue="Add a list"
                             >
                               <Option value="upload">
                                 <b>
-                                  <Icon type="upload" /> Upload list
+                                  <Icon type="upload" /> Upload New List
                                 </b>
                               </Option>
                               <Option value="Customer list 1">
@@ -305,7 +342,7 @@ class App extends React.Component {
                     </div>
                   </Col>
 
-                  <Col md={16} sm={24}>
+                  <Col md={15} sm={24}>
                     <div
                       style={{
                         padding: "16px 16px 16px 16px"
@@ -317,7 +354,7 @@ class App extends React.Component {
                           type="check-circle"
                           style={{
                             color: "lightgray",
-                            fontSize: 16,
+                            fontSize: 14,
                             marginRight: 8
                           }}
                         />
@@ -413,12 +450,14 @@ class App extends React.Component {
                                     height: "82.96%",
                                     display: "flex",
                                     alignItems: "center",
-                                    left: "4.53%",
+                                    left: 0,
                                     right: 0,
-                                    top: "4.53%",
+                                    top: 0,
                                     bottom: 0,
                                     justifyContent: "center",
-                                    border: "1px dashed lightgray"
+                                    border: "1px dashed lightgray",
+                                    borderTop: 0,
+                                    borderLeft: 0
                                   }}
                                 >
                                   <div>
@@ -437,8 +476,7 @@ class App extends React.Component {
 
                     <div
                       style={{
-                        padding: "16px 16px 16px 16px",
-                        opacity: this.state.includeOffer ? 1 : 0.5
+                        padding: "0px 16px 0px 16px"
                       }}
                     >
                       <div style={{ display: "flex", alignItems: "center" }}>
@@ -446,46 +484,7 @@ class App extends React.Component {
                           type="check-circle"
                           style={{
                             color: "lightgray",
-                            fontSize: 16,
-                            marginRight: 8
-                          }}
-                        />
-                        <span
-                          style={{
-                            fontSize: 16,
-                            fontWeight: 600,
-                            //color: "#4A9E9F"
-                            display: "flex",
-                            alignItems: "center",
-                            color: "#000000"
-                          }}
-                        >
-                          Place Offer Code{" "}
-                          <Button
-                            icon="barcode"
-                            style={{ marginLeft: 12 }}
-                            disabled={this.state.includeOffer ? false : true}
-                          >
-                            Customize
-                          </Button>
-                        </span>
-                      </div>
-                      <div>
-                        <Form layout="vertical" onSubmit={this.handleSubmit} />
-                      </div>
-                    </div>
-
-                    <div
-                      style={{
-                        padding: "16px 16px 16px 16px"
-                      }}
-                    >
-                      <div style={{ display: "flex", alignItems: "center" }}>
-                        <Icon
-                          type="check-circle"
-                          style={{
-                            color: "lightgray",
-                            fontSize: 16,
+                            fontSize: 14,
                             marginRight: 8
                           }}
                         />
@@ -496,7 +495,7 @@ class App extends React.Component {
                             color: "#000000"
                           }}
                         >
-                          Schedule + Postage
+                          Schedule
                         </span>
                       </div>
                       <div>
@@ -515,7 +514,7 @@ class App extends React.Component {
                                 label="Postage"
                                 style={{ margin: "18px 0 12px 24px" }}
                               >
-                                <Select defaultValue="please select">
+                                <Select defaultValue="Select...">
                                   <Option value="Standard">Standard</Option>
                                   <Option value="First Class">
                                     First Class
@@ -527,21 +526,47 @@ class App extends React.Component {
                         </Form>
                       </div>
                     </div>
+                    <div
+                      style={{
+                        padding: "8px 16px 16px 16px"
+                      }}
+                    >
+                      <div style={{ display: "flex", alignItems: "center" }}>
+                        <Icon
+                          type="check-circle"
+                          style={{
+                            color: "lightgray",
+                            fontSize: 14,
+                            marginRight: 8
+                          }}
+                        />
+                        <span
+                          style={{
+                            fontSize: 16,
+                            fontWeight: 600,
+                            color: "#000000"
+                          }}
+                        >
+                          Proofs & Approvals
+                        </span>
+                      </div>
+                    </div>
                   </Col>
                 </Row>
               </Col>
 
-              <Col md={5} sm={24}>
+              <Col md={4} sm={24}>
                 <div
+                  class="guide"
                   style={{
                     minHeight: "400px",
-                    backgroundColor: "white",
+
                     padding: "16px 16px 24px 16px",
                     height: "100%",
-                    borderLeft: "1px solid #e8e8e8"
+                    borderLeft: "1px solid #f3f3f3"
                   }}
                 >
-                  instructions
+                  <b style={{ fontSize: 16 }}>Guide</b>
                 </div>
               </Col>
             </Row>

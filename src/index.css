@@ -55,3 +55,17 @@ h1 {
 #addresses td {
   text-transform: uppercase;
 }
+
+.guide {
+  background-image: linear-gradient(
+    165deg,
+    #fffdfd 33.33%,
+    #ffffff 33.33%,
+    #ffffff 50%,
+    #fffdfd 50%,
+    #fffdfd 83.33%,
+    #ffffff 83.33%,
+    #ffffff 100%
+  );
+  background-size: 231.82px 62.12px;
+}
