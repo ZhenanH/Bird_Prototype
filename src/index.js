@@ -24,12 +24,32 @@ import {
   Checkbox,
   Input,
   Popover,
-  Progress
+  Progress,
+  Dropdown
 } from "antd";
 const Option = Select.Option;
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 const { Header, Content, Footer, Sider } = Layout;
+
+function handleButtonClick(e) {
+  message.info("Click on left button.");
+  console.log("click left button", e);
+}
+
+function handleMenuClick(e) {
+  message.info("Click on menu item.");
+  console.log("click", e);
+}
+
+const menu = (
+  <Menu onClick={handleMenuClick}>
+    <Menu.Item key="1">
+      <Icon type="pushpin" />
+      Save Draft
+    </Menu.Item>
+  </Menu>
+);
 
 class App extends React.Component {
   state = {
@@ -67,7 +87,7 @@ class App extends React.Component {
           <Header className="header" style={{ padding: 0 }}>
             <div
               style={{
-                padding: "0px 20px",
+                padding: "0px 30px",
                 maxWidth: "1400px",
                 margin: "auto",
                 width: "100%"
@@ -103,22 +123,30 @@ class App extends React.Component {
               }}
             >
               <Row type="flex" align="middle">
-                <Col span={19}>
+                <Col span={16}>
                   <h1>Create Drop</h1>
                 </Col>
-                <Col span={5} style={{ textAlign: "right" }}>
+                <Col span={4} style={{ textAlign: "right" }}>
                   <Progress
                     percent={30}
                     size="small"
                     strokeColor="rgb(74, 158, 159)"
                   />
                 </Col>
+                <Col md={4} style={{ textAlign: "right" }}>
+                  <span style={{ flex: 1 }} />
+
+                  <Dropdown.Button onClick={handleButtonClick} overlay={menu}>
+                    Preview Drop
+                  </Dropdown.Button>
+                </Col>
               </Row>
             </div>
             <Row type="flex" style={{ backgroundColor: "white" }}>
-              <Divider style={{ marginTop: "10px", marginBottom: "0px" }} />
+              <Divider style={{ marginTop: 12, marginBottom: "0px" }} />
               <Col md={20} sm={24}>
                 <Row
+                  type="flex"
                   style={{
                     backgroundColor: "white"
                   }}
@@ -129,223 +157,257 @@ class App extends React.Component {
                     sm={24}
                     style={{ borderRight: "1px solid #E8E8E8" }}
                   >
-                    <div
-                      style={{
-                        padding: "16px 16px 0px 16px"
-                        // borderBottom: "1px dashed lightgray"
-                      }}
-                    >
-                      <div style={{ display: "flex", alignItems: "center" }}>
-                        <Icon
-                          type="check-circle"
-                          style={{
-                            color: "#4A9E9F",
-                            fontSize: 14,
-                            marginRight: 8
-                          }}
-                        />
-                        <span
-                          style={{
-                            fontSize: 16,
-                            fontWeight: 600,
-                            color: "#000000"
-                          }}
-                        >
-                          Drop Description{" "}
-                        </span>
-                      </div>
-                      <div>
-                        <Form layout="vertical" onSubmit={this.handleSubmit}>
-                          <Form.Item
-                            label="Name"
-                            style={{ margin: "18px 0 12px 24px" }}
-                          >
-                            <Input
-                              placeholder="Enter drop name"
-                              value="Brand_2019-01-15"
-                              style={{ width: "90%" }}
-                            />
-                          </Form.Item>
-                          <Form.Item
-                            label="Tags"
-                            style={{ margin: "6px 0 12px 24px" }}
-                          >
-                            <Select
-                              mode="tags"
-                              style={{ width: "90%" }}
-                              placeholder="Type in tags"
-                              dropdownStyle={{ display: "none" }}
-                              value={["holiday"]}
-                            />
-                          </Form.Item>
-                        </Form>
-                      </div>
-                    </div>
-
-                    <div
-                      style={{
-                        padding: "6px 16px 0px 16px"
-                        //borderBottom: "1px dashed lightgray"
-                      }}
-                    >
-                      <div style={{ display: "flex", alignItems: "center" }}>
-                        <Icon
-                          type="check-circle"
-                          style={{
-                            color: "lightgray",
-                            fontSize: 14,
-                            marginRight: 8
-                          }}
-                        />
-                        <span
-                          style={{
-                            fontSize: 16,
-                            color: "#000000",
-                            fontWeight: 600
-                            //color: "#4A9E9F"
-                          }}
-                        >
-                          Postcard{" "}
-                        </span>
-                      </div>
-                      <div>
-                        <Form layout="vertical" onSubmit={this.handleSubmit}>
-                          <Row>
-                            <Col span={12}>
-                              <Form.Item
-                                label="Size"
-                                style={{ margin: "18px 0 12px 24px" }}
-                              >
-                                <RadioGroup defaultValue="4 X 6">
-                                  <RadioButton value="4 X 6">4 X 6</RadioButton>
-                                  <RadioButton value="5 X 7">5 X 7</RadioButton>
-                                </RadioGroup>
-                              </Form.Item>
-                            </Col>
-                            <Col span={11}>
-                              <Form.Item
-                                label="Finish"
-                                style={{ margin: "18px 0 12px 8px" }}
-                              >
-                                <Select defaultValue="please select">
-                                  <Option value="Matte">Matte</Option>
-                                  <Option value="Glossy">Glossy</Option>
-                                  <Option value="Regular">Regular</Option>
-                                </Select>
-                              </Form.Item>
-                            </Col>
-                          </Row>
-                        </Form>
-                      </div>
-                    </div>
-                    <div
-                      style={{
-                        padding: "16px 16px 16px 16px"
-                        //opacity: this.state.includeOffer ? 1 : 0.5
-                      }}
-                    >
-                      <div style={{ display: "flex", alignItems: "center" }}>
-                        <Icon
-                          type="check-circle"
-                          style={{
-                            color: "lightgray",
-                            fontSize: 16,
-                            marginRight: 8
-                          }}
-                        />
+                    <div style={{ height: "100%" }}>
+                      <div
+                        style={{
+                          padding: "24px 24px 0px 24px"
+                          // borderBottom: "1px dashed lightgray"
+                        }}
+                      >
                         <div
                           style={{
-                            fontSize: 16,
-                            fontWeight: 600,
-                            //color: "#4A9E9F"
                             display: "flex",
                             alignItems: "center",
-                            color: "#000000"
+                            marginBottom: 12
                           }}
                         >
-                          Custom Offer Code{" "}
+                          <Icon
+                            type="check-circle"
+                            style={{
+                              color: "#4A9E9F",
+                              fontSize: 18,
+                              marginRight: 8
+                            }}
+                          />
+                          <span
+                            style={{
+                              fontSize: 16,
+                              fontWeight: 600,
+                              color: "#000000"
+                            }}
+                          >
+                            Drop Description{" "}
+                          </span>
+                        </div>
+                        <div>
+                          <Form
+                            layout="vertical"
+                            onSubmit={this.handleSubmit}
+                            style={{ marginLeft: 28 }}
+                          >
+                            <Form.Item
+                              label="Name"
+                              style={{ marginBottom: 12 }}
+                            >
+                              <Input
+                                placeholder="Enter drop name"
+                                value="Brand_2019-01-15"
+                              />
+                            </Form.Item>
+                            <Form.Item label="Tags">
+                              <Select
+                                mode="tags"
+                                placeholder="Type in tags"
+                                dropdownStyle={{ display: "none" }}
+                                value={["holiday"]}
+                              />
+                            </Form.Item>
+                          </Form>
                         </div>
                       </div>
-                      <div style={{ padding: "10px 24px" }}>
-                        <Switch
-                          checkedChildren=" Yes"
-                          unCheckedChildren=" No"
-                          onChange={this.onChange}
-                          style={{ minWidth: 60 }}
-                        />
 
-                        <Button
-                          icon="barcode"
-                          size="small"
-                          style={{ marginLeft: 12 }}
-                          disabled={this.state.includeOffer ? false : true}
-                        >
-                          Set placeholder
-                        </Button>
-                      </div>
-                    </div>
-                    <div
-                      style={{
-                        padding: "6px 16px 0px 16px"
-                      }}
-                    >
-                      <div style={{ display: "flex", alignItems: "center" }}>
-                        <Icon
-                          type="check-circle"
+                      <div
+                        style={{
+                          padding: "0px 24px 0px 24px"
+                          //borderBottom: "1px dashed lightgray"
+                        }}
+                      >
+                        <div
                           style={{
-                            color: "lightgray",
-                            fontSize: 14,
-                            marginRight: 8
-                          }}
-                        />
-                        <span
-                          style={{
-                            fontSize: 16,
-                            fontWeight: 600,
-                            color: "#000000"
+                            display: "flex",
+                            alignItems: "center",
+                            marginBottom: 12
                           }}
                         >
-                          Mailing List{" "}
-                        </span>
-                        <span>
-                          {" "}
-                          {this.state.includeOffer
-                            ? " Alert for offer code col."
-                            : ""}
-                        </span>
+                          <Icon
+                            type="check-circle"
+                            style={{
+                              color: "lightgray",
+                              fontSize: 18,
+                              marginRight: 8
+                            }}
+                          />
+                          <span
+                            style={{
+                              fontSize: 16,
+                              color: "#000000",
+                              fontWeight: 600
+                              //color: "#4A9E9F"
+                            }}
+                          >
+                            Postcard{" "}
+                          </span>
+                        </div>
+                        <div>
+                          <Form
+                            layout="vertical"
+                            onSubmit={this.handleSubmit}
+                            style={{ marginLeft: 28 }}
+                          >
+                            <Row>
+                              <Col span={12}>
+                                <Form.Item label="Size">
+                                  <RadioGroup defaultValue="4 X 6">
+                                    <RadioButton value="4 X 6">
+                                      4 X 6
+                                    </RadioButton>
+                                    <RadioButton value="5 X 7">
+                                      5 X 7
+                                    </RadioButton>
+                                  </RadioGroup>
+                                </Form.Item>
+                              </Col>
+                              <Col span={12}>
+                                <Form.Item label="Finish">
+                                  <Select defaultValue="please select">
+                                    <Option value="Matte">Matte</Option>
+                                    <Option value="Glossy">Glossy</Option>
+                                    <Option value="Regular">Regular</Option>
+                                  </Select>
+                                </Form.Item>
+                              </Col>
+                            </Row>
+                          </Form>
+                        </div>
                       </div>
-                      <div>
-                        <Form layout="vertical" onSubmit={this.handleSubmit}>
-                          <Form.Item style={{ margin: "18px 0 12px 24px" }}>
-                            <Select
-                              style={{ width: "90%" }}
-                              defaultValue="Add a list"
-                            >
-                              <Option value="upload">
-                                <b>
-                                  <Icon type="upload" /> Upload New List
-                                </b>
-                              </Option>
-                              <Option value="Customer list 1">
-                                Customer list 1
-                              </Option>
-                              <Option value="Customer list 2">
-                                Customer list 2
-                              </Option>
-                              <Option value="Customer list 3">
-                                Customer list 3
-                              </Option>
-                            </Select>
-                          </Form.Item>
-                        </Form>
+                      <div
+                        style={{
+                          padding: "0px 24px 24px 24px"
+                          //opacity: this.state.includeOffer ? 1 : 0.5
+                        }}
+                      >
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            marginBottom: 12
+                          }}
+                        >
+                          <Icon
+                            type="check-circle"
+                            style={{
+                              color: "lightgray",
+                              fontSize: 18,
+                              marginRight: 8
+                            }}
+                          />
+                          <div
+                            style={{
+                              fontSize: 16,
+                              fontWeight: 600,
+                              //color: "#4A9E9F"
+                              display: "flex",
+                              alignItems: "center",
+                              color: "#000000"
+                            }}
+                          >
+                            Custom Offer Code{" "}
+                          </div>
+                        </div>
+                        <div
+                          style={{
+                            margin: "0 0 24px 28px",
+                            display: "flex",
+                            alignItems: "center"
+                          }}
+                        >
+                          <Switch
+                            checkedChildren=" Yes"
+                            unCheckedChildren=" No"
+                            onChange={this.onChange}
+                            style={{ minWidth: 60 }}
+                          />
+
+                          <Button
+                            icon="barcode"
+                            size="small"
+                            style={{ marginLeft: 12 }}
+                            disabled={this.state.includeOffer ? false : true}
+                          >
+                            Set placeholder
+                          </Button>
+                        </div>
+                      </div>
+                      <div
+                        style={{
+                          padding: "0px 24px 0px 24px"
+                        }}
+                      >
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            marginBottom: 12
+                          }}
+                        >
+                          <Icon
+                            type="check-circle"
+                            style={{
+                              color: "lightgray",
+                              fontSize: 18,
+                              marginRight: 8
+                            }}
+                          />
+                          <span
+                            style={{
+                              fontSize: 16,
+                              fontWeight: 600,
+                              color: "#000000"
+                            }}
+                          >
+                            Mailing List{" "}
+                          </span>
+                          <span style={{ marginLeft: 8 }}>
+                            {" "}
+                            {this.state.includeOffer
+                              ? " Alert for offer code col."
+                              : ""}
+                          </span>
+                        </div>
+                        <div>
+                          <Form
+                            layout="vertical"
+                            onSubmit={this.handleSubmit}
+                            style={{ marginLeft: 28 }}
+                          >
+                            <Form.Item>
+                              <Select defaultValue="Add a list">
+                                <Option value="upload">
+                                  <b>
+                                    <Icon type="upload" /> Upload New List
+                                  </b>
+                                </Option>
+                                <Option value="Customer list 1">
+                                  Customer list 1
+                                </Option>
+                                <Option value="Customer list 2">
+                                  Customer list 2
+                                </Option>
+                                <Option value="Customer list 3">
+                                  Customer list 3
+                                </Option>
+                              </Select>
+                            </Form.Item>
+                          </Form>
+                        </div>
                       </div>
                     </div>
                   </Col>
 
-                  <Col md={15} sm={24}>
+                  <Col md={15} lg={16} sm={24}>
                     <div
                       style={{
-                        padding: "16px 16px 16px 16px"
+                        padding: "24px 24px 12px 24px"
                         //borderBottom: "1px dashed lightgray"
                       }}
                     >
@@ -354,7 +416,7 @@ class App extends React.Component {
                           type="check-circle"
                           style={{
                             color: "lightgray",
-                            fontSize: 14,
+                            fontSize: 18,
                             marginRight: 8
                           }}
                         />
@@ -389,12 +451,9 @@ class App extends React.Component {
                           Preview
                         </Button>
                       </div>
-                      <div>
-                        <Row
-                          style={{ margin: "18px 0 12px 16px " }}
-                          gutter={32}
-                        >
-                          <Col md={24} lg={12}>
+                      <div style={{ margin: "12px 0 0 28px" }}>
+                        <Row gutter={32}>
+                          <Col md={24} lg={12} style={{ marginBottom: 24 }}>
                             <div>
                               <div style={{ display: "flex", marginBottom: 4 }}>
                                 <b>Front</b> <span style={{ flex: 1 }} />
@@ -430,7 +489,7 @@ class App extends React.Component {
                             </div>
                           </Col>
 
-                          <Col md={24} lg={12}>
+                          <Col md={24} lg={12} style={{ marginBottom: 24 }}>
                             <div>
                               <div style={{ display: "flex", marginBottom: 4 }}>
                                 <b>Back</b> <span style={{ flex: 1 }} />
@@ -476,15 +535,21 @@ class App extends React.Component {
 
                     <div
                       style={{
-                        padding: "0px 16px 0px 16px"
+                        padding: "0px 24px 0px 24px"
                       }}
                     >
-                      <div style={{ display: "flex", alignItems: "center" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          marginBottom: 12
+                        }}
+                      >
                         <Icon
                           type="check-circle"
                           style={{
                             color: "lightgray",
-                            fontSize: 14,
+                            fontSize: 18,
                             marginRight: 8
                           }}
                         />
@@ -499,21 +564,19 @@ class App extends React.Component {
                         </span>
                       </div>
                       <div>
-                        <Form layout="vertical" onSubmit={this.handleSubmit}>
-                          <Row>
+                        <Form
+                          layout="vertical"
+                          onSubmit={this.handleSubmit}
+                          style={{ marginLeft: 28 }}
+                        >
+                          <Row gutter={16}>
                             <Col md={12} sm={24}>
-                              <Form.Item
-                                label="Drop Date"
-                                style={{ margin: "18px 0 12px 24px" }}
-                              >
+                              <Form.Item label="Drop Date">
                                 <DatePicker style={{ width: "100%" }} />
                               </Form.Item>
                             </Col>
                             <Col md={12} sm={24}>
-                              <Form.Item
-                                label="Postage"
-                                style={{ margin: "18px 0 12px 24px" }}
-                              >
+                              <Form.Item label="Postage">
                                 <Select defaultValue="Select...">
                                   <Option value="Standard">Standard</Option>
                                   <Option value="First Class">
@@ -528,15 +591,21 @@ class App extends React.Component {
                     </div>
                     <div
                       style={{
-                        padding: "8px 16px 16px 16px"
+                        padding: "0px 24px 0px 24px"
                       }}
                     >
-                      <div style={{ display: "flex", alignItems: "center" }}>
+                      <div
+                        style={{
+                          display: "none",
+                          alignItems: "center",
+                          marginBottom: 24
+                        }}
+                      >
                         <Icon
                           type="check-circle"
                           style={{
                             color: "lightgray",
-                            fontSize: 14,
+                            fontSize: 18,
                             marginRight: 8
                           }}
                         />
@@ -566,64 +635,31 @@ class App extends React.Component {
                     borderLeft: "1px solid #f3f3f3"
                   }}
                 >
-                  <b style={{ fontSize: 16 }}>Guide</b>
+                  <div
+                    style={{ fontSize: 16, color: "black", fontWeight: "600" }}
+                  >
+                    Intel
+                  </div>
                 </div>
               </Col>
             </Row>
-            <div style={{ backgroundColor: "#ffffff" }}>
-              <Divider style={{ margin: 0 }} />
-            </div>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                padding: 8,
-                color: "black",
-                fontSize: 16,
-                display: "flex",
-                justifyContent: "center",
-                background: "white"
+
+            <Modal
+              title="Basic Modal"
+              footer={null}
+              visible={this.state.visible}
+              onOk={this.handleOk}
+              onCancel={this.handleCancel}
+              maskStyle={{
+                background:
+                  "linear-gradient(to bottom left, #f10f4d 0%, #fa7044 100%)"
               }}
             >
-              <div
-                style={{
-                  margin: 4,
-                  display: "flex",
-                  width: "100%",
-                  alignItems: "center"
-                }}
-              >
-                <a style={{ opacity: 0.4, fontSize: 12 }}>Save Draft</a>
-                <span style={{ flex: 1 }} />
-                <Button
-                  style={{
-                    background: "#FF6178",
-                    border: "1px solid #FF6178"
-                  }}
-                  type="primary"
-                  onClick={this.showModal}
-                  size="large"
-                >
-                  Prepare Drop
-                </Button>
+              <div>
+                <div style={{ backgroundColor: "lightgray" }} />
+                <div style={{ backgroundColor: "white" }} />
               </div>
-              <Modal
-                title="Basic Modal"
-                footer={null}
-                visible={this.state.visible}
-                onOk={this.handleOk}
-                onCancel={this.handleCancel}
-                maskStyle={{
-                  background:
-                    "linear-gradient(to bottom left, #f10f4d 0%, #fa7044 100%)"
-                }}
-              >
-                <div>
-                  <div style={{ backgroundColor: "lightgray" }} />
-                  <div style={{ backgroundColor: "white" }} />
-                </div>
-              </Modal>
-            </div>
+            </Modal>
           </Content>
           <Footer style={{ textAlign: "center" }}>
             Flamingo ©2019 Created by Pebblepost
@@ -633,5 +669,17 @@ class App extends React.Component {
     );
   }
 }
+
+<Button
+  style={{
+    background: "#FF6178",
+    border: "1px solid #FF6178"
+  }}
+  type="primary"
+  //onClick={this.showModal}
+  size="large"
+>
+  Prepare Drop
+</Button>;
 
 ReactDOM.render(<App />, document.getElementById("root"));

@@ -69,3 +69,13 @@ h1 {
   );
   background-size: 231.82px 62.12px;
 }
+
+.ant-dropdown-button button,
+.ant-dropdown-button button:hover,
+.ant-dropdown-button button,
+.ant-dropdown-button button:active,
+.ant-dropdown-button button:focus {
+  background-color: #ff6178 !important;
+  border-color: rgb(255, 121, 141);
+  color: white;
+}
