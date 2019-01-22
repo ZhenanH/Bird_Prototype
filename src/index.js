@@ -16,12 +16,10 @@ import "./index.css";
 import {
   Layout,
   Menu,
-  Breadcrumb,
   Icon,
   Form,
   Radio,
   Select,
-  Checkbox,
   Input,
   Popover,
   Progress,
@@ -109,7 +107,7 @@ class App extends React.Component {
 
           <Content
             style={{
-              padding: "30px 30px",
+              padding: "2% 2% 0 2%",
               maxWidth: "1400px",
               margin: "auto",
               width: "100%"
@@ -122,21 +120,23 @@ class App extends React.Component {
                 paddingBottom: 0
               }}
             >
-              <Row type="flex" align="middle">
-                <Col span={16}>
+              <Row type="flex" align="middle" gutter={16}>
+                <Col md={14} sm={24} xs={24}>
                   <h1>Create Drop</h1>
                 </Col>
-                <Col span={4} style={{ textAlign: "right" }}>
+                <Col md={4} sm={12} xs={12} style={{ textAlign: "right" }}>
                   <Progress
                     percent={30}
                     size="small"
                     strokeColor="rgb(74, 158, 159)"
                   />
                 </Col>
-                <Col md={4} style={{ textAlign: "right" }}>
-                  <span style={{ flex: 1 }} />
-
-                  <Dropdown.Button onClick={handleButtonClick} overlay={menu}>
+                <Col md={6} sm={12} xs={12} style={{ textAlign: "right" }}>
+                  <Dropdown.Button
+                    onClick={handleButtonClick}
+                    overlay={menu}
+                    onClick={this.showModal}
+                  >
                     Preview Drop
                   </Dropdown.Button>
                 </Col>
@@ -144,7 +144,7 @@ class App extends React.Component {
             </div>
             <Row type="flex" style={{ backgroundColor: "white" }}>
               <Divider style={{ marginTop: 12, marginBottom: "0px" }} />
-              <Col md={20} sm={24}>
+              <Col md={20} sm={24} xs={24}>
                 <Row
                   type="flex"
                   style={{
@@ -155,6 +155,7 @@ class App extends React.Component {
                     md={9}
                     lg={8}
                     sm={24}
+                    xs={24}
                     style={{ borderRight: "1px solid #E8E8E8" }}
                   >
                     <div style={{ height: "100%" }}>
@@ -404,7 +405,7 @@ class App extends React.Component {
                     </div>
                   </Col>
 
-                  <Col md={15} lg={16} sm={24}>
+                  <Col md={15} lg={16} sm={24} xs={24}>
                     <div
                       style={{
                         padding: "24px 24px 12px 24px"
@@ -624,7 +625,7 @@ class App extends React.Component {
                 </Row>
               </Col>
 
-              <Col md={4} sm={24}>
+              <Col lg={4} md={24} sm={24} xs={24}>
                 <div
                   class="guide"
                   style={{
