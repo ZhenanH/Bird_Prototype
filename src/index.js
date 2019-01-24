@@ -107,7 +107,7 @@ class App extends React.Component {
 
           <Content
             style={{
-              padding: "2% 2% 0 2%",
+              padding: "1% 1% 0 1%",
               maxWidth: "1400px",
               margin: "auto",
               width: "100%"
@@ -121,24 +121,38 @@ class App extends React.Component {
               }}
             >
               <Row type="flex" align="middle" gutter={16}>
-                <Col md={14} sm={24} xs={24}>
+                <Col span={12}>
                   <h1>Create Drop</h1>
                 </Col>
-                <Col md={4} sm={12} xs={12} style={{ textAlign: "right" }}>
-                  <Progress
-                    percent={30}
-                    size="small"
-                    strokeColor="rgb(74, 158, 159)"
-                  />
-                </Col>
-                <Col md={6} sm={12} xs={12} style={{ textAlign: "right" }}>
-                  <Dropdown.Button
-                    onClick={handleButtonClick}
-                    overlay={menu}
-                    onClick={this.showModal}
-                  >
-                    Preview Drop
-                  </Dropdown.Button>
+                <Col
+                  span={12}
+                  style={{
+                    textAlign: "right",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-end"
+                  }}
+                >
+                  <Row type="flex" align="middle" gutter={16}>
+                    <Col md={12} sm={0} xs={0}>
+                      <div style={{ width: 200, marginRight: 24 }}>
+                        <Progress
+                          percent={30}
+                          size="small"
+                          strokeColor="rgb(74, 158, 159)"
+                        />
+                      </div>
+                    </Col>
+                    <Col md={12} sm={24} xs={24}>
+                      <Dropdown.Button
+                        onClick={handleButtonClick}
+                        overlay={menu}
+                        onClick={this.showModal}
+                      >
+                        Preview Drop
+                      </Dropdown.Button>
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
             </div>
@@ -256,24 +270,20 @@ class App extends React.Component {
                             style={{ marginLeft: 28 }}
                           >
                             <Row>
-                              <Col span={12}>
+                              <Col span={10}>
                                 <Form.Item label="Size">
-                                  <RadioGroup defaultValue="4 X 6">
-                                    <RadioButton value="4 X 6">
-                                      4 X 6
-                                    </RadioButton>
-                                    <RadioButton value="5 X 7">
-                                      5 X 7
-                                    </RadioButton>
-                                  </RadioGroup>
+                                  <Select defaultValue="Select...">
+                                    <Option value="4x6">4 x 6</Option>
+                                    <Option value="5x7">5 x 7</Option>
+                                  </Select>
                                 </Form.Item>
                               </Col>
-                              <Col span={12}>
+                              <Col span={12} offset={2}>
                                 <Form.Item label="Finish">
-                                  <Select defaultValue="please select">
-                                    <Option value="Matte">Matte</Option>
+                                  <Select defaultValue="Select...">
                                     <Option value="Glossy">Glossy</Option>
-                                    <Option value="Regular">Regular</Option>
+                                    <Option value="Regular">Satin</Option>
+                                    <Option value="Matte">Matte</Option>
                                   </Select>
                                 </Form.Item>
                               </Col>
